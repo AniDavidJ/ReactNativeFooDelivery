@@ -11,6 +11,7 @@ import {Colors, Fonts, General} from '../contants';
 import {WelcomeCard, Separator} from '../components';
 import {Display} from '../utils';
 
+
 const pageStyle = isActive =>
   isActive
     ? styles.page
@@ -50,7 +51,7 @@ const WelcomeScreen = ({navigation}) => {
         barStyle="dark-content"
         backgroundColor={Colors.DEFAULT_WHITE}
         translucent
-      />
+      />            
       <Separator height={StatusBar.currentHeight} />
       <Separator height={Display.setHeight(8)} />
       <View style={styles.welcomeListContainer}>
