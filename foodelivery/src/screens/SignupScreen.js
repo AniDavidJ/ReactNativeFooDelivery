@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState} from 'react'
 import {
   StyleSheet,
   Text,
@@ -8,34 +8,36 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
-import {Separator, ToggleButton} from '../components';
 import {Colors, Images, Fonts} from '../contants';
+import {Separator} from '../components';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Display } from '../utils';
+import Feather from 'react-native-vector-icons/Feather';
 
-const SigninScreen = ({ navigation }) => {
-  const [isPasswordShow, setIsPasswordShow] = useState(false);
 
-  return (
-    <View style={styles.container}>
-      <StatusBar
+const SignupScreen = ({ navigation }) => {
+    const [isPasswordShow, setIsPasswordShow] = useState(false);
+
+    return (
+        <View style={styles.container}>
+           <StatusBar
         barStyle="dark-content"
         backgroundColor={Colors.DEFAULT_WHITE}
         translucent
-      />
-      <Separator height={StatusBar.currentHeight} />
-      <View style={styles.headerContainer}>
-        <Ionicons
+        />
+        <Separator height={StatusBar.currentHeight} />
+          <View style={styles.headerContainer}> 
+            <Ionicons
           name="chevron-back-outline"
           size={30}
           onPress={() => navigation.pop()}
         />
-        <Text style={styles.headerTitle}>Sign In</Text>
-      </View>
-      <Text style={styles.title}>Welcome</Text>
+             <Text style={styles.headerTitle}>Sign Up</Text>
+            </View>
+
+              <Text style={styles.title}>Create Account</Text>
       <Text style={styles.content}>
-        Enter your username and password, and enjoy ordering food
+        Enter your Name, Email and password for sign up.
       </Text>
       <View style={styles.inputContiner}>
         <View style={styles.inputSubContainer}>
@@ -47,6 +49,22 @@ const SigninScreen = ({ navigation }) => {
           />
           <TextInput
             placeholder="Username"
+            placeholderTextColor={Colors.DEFAULT_GREY}
+            style={styles.inputText}
+          />
+        </View>
+      </View>
+      <Separator height={15} />
+      <View style={styles.inputContiner}>
+        <View style={styles.inputSubContainer}>
+          <Feather
+            name="mail"
+            size={22}
+            color={Colors.DEFAULT_GREY}
+            style={{marginRight: 10}}
+          />
+          <TextInput
+            placeholder="Email"
             placeholderTextColor={Colors.DEFAULT_GREY}
             style={styles.inputText}
           />
@@ -76,21 +94,11 @@ const SigninScreen = ({ navigation }) => {
           />
         </View>
       </View>
-      <Text></Text>
-      <View style={styles.forgotPasswordContainer}>
-        <View style={styles.toggleContainer}>
-          <ToggleButton size={0.5} />
-          <Text style={styles.rememberMeText}>Remember me</Text>
-        </View>
-        <Text style={styles.fortgotPasswordText} onPress={()=> navigation.navigate("ForgetPassword")}>Forgot Password</Text>
-      </View>
-      <TouchableOpacity style={styles.signinButton}>
-        <Text style={styles.signinButtonText} onPress={()=> navigation.navigate("Signup")}>Sign In</Text>
+            <Text style={{textAlign:'center'}}></Text>
+
+      <TouchableOpacity style={styles.signupButton}>
+        <Text style={styles.signupButtonText} onPress={()=> navigation.navigate("Signup")}>Create Account</Text>
       </TouchableOpacity>
-      <View style={styles.signupContainer}>
-        <Text style={styles.accountText}> Don't have an account?</Text>
-        <Text style={styles.signupText}>Sign Up</Text>
-      </View>
       <Text style={styles.orText}>OR</Text>
       <TouchableOpacity style={styles.facebookButton}>
         <View style={styles.socialButtonContainer}>
@@ -108,18 +116,18 @@ const SigninScreen = ({ navigation }) => {
         </View>
         <Text style={styles.socialSigninButtonText}>Connect with Google</Text>
       </TouchableOpacity>
-    </View>
-  );
-};
+        </View>
+    )
+}
 
-export default SigninScreen;
+export default SignupScreen
 
 const styles = StyleSheet.create({
-  container: {
+     container: {
     flex: 1,
     backgroundColor: Colors.DEFAULT_WHITE,
   },
-  headerContainer: {
+    headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 10,
@@ -168,25 +176,7 @@ const styles = StyleSheet.create({
     color: Colors.DEFAULT_BLACK,
     flex: 1,
   },
-  forgotPasswordContainer: {
-    marginHorizontal: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  rememberMeText: {
-    marginLeft: 10,
-    fontSize: 12,
-    lineHeight: 12 * 1.4,
-    color: Colors.DEFAULT_GREY,
-  },
-  fortgotPasswordText: {
-    fontSize: 12,
-    lineHeight: 12 * 1.4,
-    fontFamily: Colors.POPPINS_BLOD,
-    color: Colors.DEFAULT_GREEN,
-  },
-  signinButton: {
+   signupButton: {
     backgroundColor: Colors.DEFAULT_GREEN,
     borderRadius: 8,
     marginHorizontal: 20,
@@ -195,31 +185,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
-  signinButtonText: {
+  signupButtonText: {
     fontSize: 18,
     lineHeight: 18 * 1.4,
     fontFamily: Colors.POPPINS_MEDIUM,
     color: Colors.DEFAULT_WHITE,
-  },
-  signupContainer: {
-    marginHorizontal: 20,
-    justifyContent: 'center',
-    paddingVertical: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  accountText: {
-    fontSize: 13,
-    lineHeight: 13 * 1.4,
-    fontFamily: Colors.POPPINS_MEDIUM,
-    color: Colors.DEFAULT_BLACK,
-  },
-  signupText: {
-    fontSize: 13,
-    lineHeight: 13 * 1.4,
-    fontFamily: Colors.POPPINS_MEDIUM,
-    color: Colors.DEFAULT_GREEN,
-    marginLeft: 5,
   },
   orText: {
     fontSize: 15,
@@ -228,6 +198,7 @@ const styles = StyleSheet.create({
     color: Colors.DEFAULT_BLACK,
     marginLeft: 5,
     alignSelf: 'center',
+    marginTop:20
   },
   facebookButton: {
     backgroundColor: Colors.FABEBOOK_BLUE,
@@ -269,8 +240,4 @@ const styles = StyleSheet.create({
     lineHeight: 13 * 1.4,
     fontFamily: Fonts.POPPINS_MEDIUM,
   },
-  toggleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-});
+})
